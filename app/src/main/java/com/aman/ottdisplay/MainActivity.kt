@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.EditText
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import okhttp3.*
@@ -54,11 +56,23 @@ class MainActivity : AppCompatActivity(), GenreAdapter.OnItemClickListener{
 
         })
 
+        val button : Button = findViewById(R.id.button)
+        button.setOnClickListener {
+
+            val editText : EditText = findViewById(R.id.searchEditText)
+            val string : String = editText.text.toString()
+            val intent = Intent(this,Details::class.java)
+            intent.putExtra("genre",string)
+            intent.putExtra("type",2)
+            startActivity(intent)
+        }
+
     }
 
     override fun onItemClick(string: String) {
         val intent = Intent(this,Details::class.java)
         intent.putExtra("genre",string)
+        intent.putExtra("type",1)
         startActivity(intent)
     }
 }
