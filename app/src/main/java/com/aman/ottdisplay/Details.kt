@@ -69,11 +69,10 @@ class Details : AppCompatActivity() {
 
                     val title = jObject.get("title").toString()
 
-                    var imdbRating: Any
-                    imdbRating = try {
+                    val imdbRating: Any = try {
                         jObject.get("imdbrating")
                     }catch (e : JSONException){
-                        "0"
+                        "0.0"
                     }
 
                     var url: Any
